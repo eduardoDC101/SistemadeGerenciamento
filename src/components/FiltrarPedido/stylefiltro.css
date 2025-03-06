@@ -1,0 +1,67 @@
+.fundoFiltro {
+  border-bottom: 2px solid rgb(12, 105, 119);
+  width: 80%;
+  margin: 20px auto;
+  padding: 0 0 20px 0;
+}
+
+.fundoFiltro form {
+  display: flex;
+  width: 50%;
+  margin: 0 auto;
+  justify-content: space-around;
+}
+
+.fundoFiltro form span {
+  font-weight: 600;
+  font-size: 1.5em;
+  color: rgb(7, 77, 87);
+  margin-right: 5px;
+}
+
+.fundoFiltro form label input {
+  opacity: 0.8;
+  border: none;
+  outline: none;
+  font-weight: 600;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.fundoFiltro form label select {
+  opacity: 0.8;
+  border: none;
+  outline: none;
+  font-weight: 600;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+@media (max-width: 1150px) {
+  .fundoFiltro form {
+    width: 80%;
+  }
+  .fundoFiltro form label input {
+    width: 100%;
+  }
+
+  .fundoFiltro form label select {
+    width: 100%;
+  }
+}
+
+@media (max-width: 780px) {
+  .fundoFiltro form {
+    justify-content: space-between;
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .fundoFiltro form {
+    flex-direction: column;
+  }
+  .fundoFiltro form label input {
+    margin-bottom: 10px;
+  }
+}

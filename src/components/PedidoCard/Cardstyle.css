@@ -1,0 +1,183 @@
+.pedidoCard {
+  width: 80%;
+  background-color: #ffffffcc;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  margin-top: 10px;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+.pedidoCard:hover {
+  cursor: pointer;
+  background-color: #d4d4d4cc;
+}
+
+.pedidoCard:active {
+  scale: 0.97;
+}
+
+.fundoTextoCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 75%;
+}
+
+.pedidoCard h3 {
+  font-weight: bolder;
+  font-size: 1.4em;
+}
+
+.pedidoCard p {
+  font-size: 1.4em;
+}
+
+.pedidoCard h3,
+p {
+  width: 25%;
+}
+
+.pedidoCard .espaco {
+  opacity: 0;
+}
+
+.SemPedido {
+  font-size: 1.5em;
+  font-weight: 600;
+  color: #1e6973;
+  text-align: center;
+  opacity: 0.6;
+  width: 100%;
+}
+
+.fundoBotoesCard {
+  display: flex;
+  justify-content: center;
+  width: 20%;
+}
+
+.pedidoCard button {
+  margin: 0 5px;
+  background-color: #67a7af;
+  color: white;
+  font-weight: 600;
+  font-size: 1.5em;
+  border-radius: 5px;
+  border: none;
+  padding: 0 10px;
+  letter-spacing: 1.5px;
+}
+
+.pedidoCard button.excluir {
+  background-color: white;
+  border: 3px solid #67a7af;
+}
+
+.pedidoCard button.excluir {
+  padding: 5px 15px;
+  color: red;
+}
+.pedidoCard button.excluir:hover {
+  cursor: pointer;
+  background-color: red;
+  color: white;
+  border: 3px solid red;
+}
+
+.pedidoCard button:hover {
+  cursor: pointer;
+  background-color: #39656b;
+}
+
+@media (max-width: 1070px) {
+  .pedidoCard {
+    width: 92%;
+  }
+}
+
+@media (max-width: 820px) {
+  .pedidoCard {
+    width: 70%;
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .fundoTextoCard {
+    flex-direction: column;
+    width: 50%;
+  }
+  .fundoBotoesCard {
+    width: 45%;
+    flex-direction: column;
+  }
+
+  .pedidoCard button {
+    width: 60%;
+    padding: 10px 5px;
+    margin: 5px auto;
+    letter-spacing: 1.5px;
+  }
+
+  .pedidoCard h3,
+  p {
+    width: 100%;
+    margin: 5px;
+  }
+  .pedidoCard h3 {
+    font-size: 1.6em;
+  }
+
+  .pedidoCard p {
+    font-size: 1.6em;
+  }
+  .pedidoCard button {
+    width: 60%;
+    padding: 10px 5px;
+    margin: 5px auto;
+    letter-spacing: 1.5px;
+  }
+}
+
+@media (max-width: 500px) {
+  .pedidoCard {
+    width: 85%;
+  }
+  .pedidoCard button {
+    width: 80%;
+    padding: 15px 30px;
+  }
+  .fundoTextoCard {
+    width: 50%;
+  }
+  .fundoBotoesCard {
+    width: 50%;
+  }
+  .pedidoCard button i {
+    font-size: 1.2em;
+    padding: 5px;
+  }
+}
+
+@media (max-width: 350px) {
+  .pedidoCard h3 {
+    font-size: 1.3em;
+  }
+
+  .pedidoCard p {
+    font-size: 1.3em;
+  }
+  .pedidoCard button i {
+    font-size: 1em;
+  }
+  .pedidoCard button {
+    font-size: 1.1em;
+  }
+
+  .fundoTextoCard {
+    width: 47%;
+  }
+  .fundoBotoesCard {
+    width: 53%;
+  }
+}

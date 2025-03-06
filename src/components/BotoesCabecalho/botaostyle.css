@@ -1,0 +1,112 @@
+header.cabecalhoHeader {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+header.cabecalhoHeader button {
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 2.2em;
+  padding: 10px 40px;
+  font-weight: 600;
+  margin: 0 10px;
+  background-color: #1693a5;
+}
+
+header.cabecalhoHeader button:hover {
+  cursor: pointer;
+  background-color: #0c6977;
+  transition: 0.3s;
+}
+
+header.cabecalhoHeader button:active {
+  scale: 0.95;
+  transition: 0.1s;
+}
+
+.cabecalhoValores {
+  font-size: 1.8em;
+  background-color: #0c6977;
+  color: white;
+  padding: 10px 40px;
+  text-align: left;
+  border-radius: 5px;
+  margin: 0 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+span.valor {
+  color: rgb(255, 255, 0);
+  margin-left: 5px;
+}
+
+span.linhaValor {
+  width: 100%;
+}
+
+@media (max-width: 910px) {
+  header.cabecalhoHeader button {
+    font-size: 2em;
+    padding: 2px 15px;
+    margin: 0 10px;
+  }
+}
+
+@media (max-width: 780px) {
+  .cabecalhoValores {
+    width: 70%;
+    padding: 10px 40px;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  span.linhaValor {
+    width: 50%;
+  }
+  header.cabecalhoHeader button {
+    font-size: 2em;
+    width: 39%;
+    padding: 15px 40px;
+  }
+}
+
+@media (max-width: 580px) {
+  .cabecalhoValores {
+    width: 80%;
+    padding: 10px 40px;
+    flex-direction: column;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  span.linhaValor {
+    width: 100%;
+  }
+  header.cabecalhoHeader button {
+    font-size: 1.8em;
+    width: 45%;
+    padding: 15px 30px;
+  }
+}
+
+@media (max-width: 660px) {
+  .cabecalhoValores {
+    flex-direction: column;
+    text-align: center;
+  }
+  span.linhaValor {
+    width: 100%;
+  }
+}
+
+@media (max-width: 420px) {
+  header.cabecalhoHeader button {
+    width: 95%;
+    margin: 5px;
+  }
+}

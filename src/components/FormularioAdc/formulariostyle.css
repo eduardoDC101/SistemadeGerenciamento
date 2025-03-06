@@ -1,0 +1,98 @@
+.divFundoForm {
+  background-color: #ffffffcc;
+  color: white;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.243);
+  border-radius: 10px;
+  width: 40%;
+  margin: 20px auto 70px auto;
+  padding: 5px 10px;
+  text-align: center;
+}
+
+.divFundoForm h1 {
+  font-size: 4em;
+  color: #45b5c4;
+}
+
+.divFundoForm form {
+  text-align: left;
+  width: 85%;
+  margin: 0 auto;
+}
+
+.divFundoForm form label {
+  font-size: 1.5em;
+  font-weight: 600;
+  color: #217a86;
+  margin-bottom: 5px;
+}
+
+.divFundoForm form input {
+  width: 100%;
+  padding: 10px;
+  font-weight: 600;
+  border: none;
+  outline: none;
+  border: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.204);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.divFundoForm .itensForm {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.divFundoForm form select {
+  padding: 10px;
+  outline: none;
+  border: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.204);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.divFundoForm form .radio input {
+  width: 20px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.divFundoForm form button {
+  padding: 20px 15px;
+  color: white;
+  background-color: #45b5c4;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1.5em;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.divFundoForm form button:hover {
+  background-color: #1e6973;
+  transition: 0.3s;
+  cursor: pointer;
+}
+@media (max-width: 1250px) {
+  .divFundoForm {
+    width: 60%;
+  }
+}
+@media (max-width: 710px) {
+  .divFundoForm {
+    width: 80%;
+  }
+  .divFundoForm h1 {
+    font-size: 3em;
+  }
+}
+@media (max-width: 460px) {
+  .divFundoForm h1 {
+    font-size: 2.5em;
+  }
+}
