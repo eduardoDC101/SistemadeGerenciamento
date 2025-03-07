@@ -8,12 +8,18 @@ export default function BotoesCabecalhos({
   totalEmVendas,
   pedidos,
 }) {
-  /*____________________________________________________________________________________ */
+  //____________________________________________________________________________________
   const emitirRelatorio = () => {
     // Filtrando os pedidos entregues
     const pedidosEntregues = pedidos.filter(
       (pedido) => pedido.estado === "Entregue"
     );
+
+    // Calcular o total de vendas das entregues
+    const totalVendasEntregues = pedidosEntregues.reduce((total, pedido) => {
+      const valorBruto = calcularValorTotal(pedido);
+      return total + valorBruto;
+    }, 0);
 
     // Criando o PDF
     const doc = new jsPDF();
@@ -62,7 +68,7 @@ export default function BotoesCabecalhos({
     });
 
     // Adicionando o total de vendas após todos os pedidos
-    const totalVendasTexto = `Total de Vendas: ${totalEmVendas.toLocaleString(
+    const totalVendasTexto = `Total de Vendas: ${totalVendasEntregues.toLocaleString(
       "pt-BR",
       { style: "currency", currency: "BRL" }
     )}`;
@@ -93,7 +99,7 @@ export default function BotoesCabecalhos({
       : 0;
   };
 
-  /*____________________________________________________________________________________ */
+  //____________________________________________________________________________________
 
   return (
     <header className="cabecalhoHeader">
