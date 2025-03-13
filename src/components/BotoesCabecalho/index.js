@@ -8,7 +8,6 @@ export default function BotoesCabecalhos({
   totalEmVendas,
   pedidos,
 }) {
-  //____________________________________________________________________________________
   const emitirRelatorio = () => {
     // Filtrando os pedidos entregues, todo pedido com estado entregue, é armazenado em pedidosEntregues
     const pedidosEntregues = pedidos.filter(
@@ -105,8 +104,6 @@ export default function BotoesCabecalhos({
       ? quantidade * produtoSelecionado.valorUnitario
       : 0;
   };
-
-  //____________________________________________________________________________________
 
   return (
     <header className="cabecalhoHeader">
