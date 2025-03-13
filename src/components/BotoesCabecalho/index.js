@@ -1,5 +1,5 @@
 import React from "react";
-import { jsPDF } from "jspdf";
+import { jsPDF } from "jspdf"; //Usada para criar e manipular pdfs
 import "./botaostyle.css";
 
 export default function BotoesCabecalhos({
@@ -10,7 +10,7 @@ export default function BotoesCabecalhos({
 }) {
   //____________________________________________________________________________________
   const emitirRelatorio = () => {
-    // Filtrando os pedidos entregues
+    // Filtrando os pedidos entregues, todo pedido com estado entregue, é armazenado em pedidosEntregues
     const pedidosEntregues = pedidos.filter(
       (pedido) => pedido.estado === "Entregue"
     );
@@ -19,28 +19,28 @@ export default function BotoesCabecalhos({
     const totalVendasEntregues = pedidosEntregues.reduce((total, pedido) => {
       const valorBruto = calcularValorTotal(pedido);
       return total + valorBruto;
-    }, 0);
+    }, 0); // total começa com 0
 
     // Criando o PDF
     const doc = new jsPDF();
 
-    // Definindo fonte e tamanho
+    /* .set Define fonte e tamanho
     doc.setFont("helvetica", "normal");
-    doc.setFontSize(14);
+    doc.setFontSize(14);*/
 
     // Título do PDF em negrito
     doc.setFont("helvetica", "bold");
     doc.setFontSize(18);
-    doc.text("Relatório de Pedidos Entregues", 20, 20);
+    doc.text("Relatório de Pedidos Entregues", 20, 20); // .text insere algo no doc, 20px a direita(x) e 20px pra baixo(y)
 
     // Adicionando um espaço de uma linha abaixo do título
     let y = 40; // Posição vertical inicial para os dados
 
-    // Adicionando os cabeçalhos das colunas
+    // Adicionando os cabeçalhos das colunas e redefinindo as fonts
     doc.setFontSize(16);
     doc.setFont("helvetica", "bold");
     doc.text("Nome", 20, y);
-    doc.text("Data", 100, y); // Ajustando a posição para alinhar corretamente
+    doc.text("Data", 100, y); // Ajustando a posição para alinhar corretamente, mesma linha (y) distancias diferentes(x)
     doc.text("Valor", 150, y);
     y += 10; // Distância entre o cabeçalho e os dados
 
@@ -51,6 +51,13 @@ export default function BotoesCabecalhos({
     // Adicionando os dados dos pedidos
     pedidosEntregues.forEach((pedido) => {
       const valorBruto = calcularValorTotal(pedido);
+
+      // verifica se está perto de acabar a página para criar outra np pdf
+      if (y > 270) {
+        // se a altura(y) for maior que 270(290 geralmente o tamanho da tela)
+        doc.addPage(); // vamos adicionar uma nova página no pdf
+        y = 20; // vamos resetar a altura, para podermos usar "certo" para alinhar
+      }
 
       // Alinhando o texto
       doc.text(pedido.nome, 20, y); // Nome alinhado à esquerda
@@ -83,7 +90,7 @@ export default function BotoesCabecalhos({
     doc.save("Relatorio_Polaroigs.pdf");
   };
 
-  // Função para calcular o valor total do pedido (simplificando para o valor bruto)
+  // Função para calcular o valor total do pedido
   const calcularValorTotal = (pedido) => {
     const quantidade = parseInt(pedido.quantidade, 10);
     const produtos = {
