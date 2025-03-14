@@ -14,6 +14,7 @@ export default function App() {
   //States de Filtro:
   const [filtro, setFiltro] = useState("");
   const [nome, setNome] = useState("");
+  const [mes, setMes] = useState("");
 
   //Carregar Pedidos do LocalStorage
   useEffect(() => {
@@ -78,10 +79,12 @@ export default function App() {
     return pedidos.filter((pedido) => {
       return (
         (filtro === "" || pedido.estado === filtro) &&
-        (nome === "" || pedido.nome.toLowerCase().includes(nome.toLowerCase()))
+        (nome === "" ||
+          pedido.nome.toLowerCase().includes(nome.toLowerCase())) &&
+        (mes === "" || pedido.data.split("/")[1] === mes)
       );
     });
-  }, [pedidos, filtro, nome]);
+  }, [pedidos, filtro, nome, mes]);
 
   return (
     <div className="fundoPrincipal">
@@ -104,6 +107,8 @@ export default function App() {
             setNome={setNome}
             filtro={filtro}
             setFiltro={setFiltro}
+            mes={mes}
+            setMes={setMes}
           />
         ) : (
           console.log("")

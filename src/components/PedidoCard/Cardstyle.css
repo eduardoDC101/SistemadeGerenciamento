@@ -98,7 +98,7 @@ p {
 
 @media (max-width: 820px) {
   .pedidoCard {
-    width: 70%;
+    width: 85%;
     flex-direction: row;
     text-align: left;
   }
@@ -139,9 +139,21 @@ p {
   }
 }
 
+@media (max-width: 780px) {
+  .pedidoCard {
+    width: 77%;
+  }
+}
+
+@media (max-width: 580px) {
+  .pedidoCard {
+    width: 82%;
+  }
+}
+
 @media (max-width: 500px) {
   .pedidoCard {
-    width: 85%;
+    width: 80%;
   }
   .pedidoCard button {
     width: 80%;

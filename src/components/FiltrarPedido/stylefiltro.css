@@ -50,18 +50,39 @@
   }
 }
 
+@media (max-width: 1050px) {
+  .fundoFiltro form {
+    width: 100%;
+  }
+}
+
+@media (max-width: 825px) {
+  .fundoFiltro {
+    width: 85%;
+  }
+}
+
 @media (max-width: 780px) {
   .fundoFiltro form {
     justify-content: space-between;
     width: 100%;
   }
-}
-
-@media (max-width: 600px) {
+  .fundoFiltro {
+    width: 80%;
+  }
   .fundoFiltro form {
     flex-direction: column;
   }
-  .fundoFiltro form label input {
-    margin-bottom: 10px;
+  .fundoFiltro form label select {
+    margin: 5px 0;
+  }
+  .fundoFiltro form input {
+    margin: 5px 0;
+  }
+}
+
+@media (max-width: 580px) {
+  .fundoFiltro {
+    width: 90%;
   }
 }
