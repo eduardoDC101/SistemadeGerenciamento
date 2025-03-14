@@ -9,12 +9,18 @@ export default function FiltrarPedido({
   mes,
   setMes,
 }) {
+  const limparFiltro = () => {
+    setFiltro("");
+    setMes("");
+    setNome("");
+  };
+
   return (
     <div className="fundoFiltro">
       <form>
         <div>
           <label>
-            <span>Pesquisar:</span>
+            <span>Nome do Cliente:</span>
             <input
               id="nomeFiltro"
               name="nomeFiltro"
@@ -27,7 +33,7 @@ export default function FiltrarPedido({
 
         <div>
           <label>
-            <span>Filtrar:</span>
+            <span>Estado:</span>
             <select
               id="estadoFitro"
               name="estadoFiltro"
@@ -65,6 +71,11 @@ export default function FiltrarPedido({
               <option value={"12"}>Dezembro</option>
             </select>
           </label>
+        </div>
+        <div>
+          <button id="limpar" onClick={limparFiltro}>
+            Limpar
+          </button>
         </div>
       </form>
     </div>
