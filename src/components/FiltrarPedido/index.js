@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import "./stylefiltro.css";
 
 export default function FiltrarPedido({
@@ -9,11 +9,21 @@ export default function FiltrarPedido({
   mes,
   setMes,
 }) {
-  const limparFiltro = () => {
+  /*const limparFiltro = () => {
     setFiltro("");
     setMes("");
     setNome("");
-  };
+  };*/
+
+  const limparFiltro = useCallback(
+    (e) => {
+      e.preventDefault(); // Previne o envio do formulário
+      setFiltro("");
+      setMes("");
+      setNome("");
+    },
+    [setNome, setFiltro, setMes]
+  );
 
   return (
     <div className="fundoFiltro">
