@@ -57,10 +57,10 @@
 
 @media (max-width: 1150px) {
   .fundoFiltro form {
-    width: 80%;
+    width: 100%;
   }
   .fundoFiltro form label input {
-    width: 100%;
+    width: 80%;
   }
 
   .fundoFiltro form label select {
@@ -72,11 +72,24 @@
   .fundoFiltro form {
     width: 100%;
   }
+  .fundoFiltro form label input {
+    width: 50%;
+  }
+
+  .fundoFiltro form label select {
+    width: 50%;
+  }
 }
 
-@media (max-width: 825px) {
+@media (max-width: 900px) {
   .fundoFiltro {
-    width: 85%;
+    width: 95%;
+  }
+}
+
+@media (max-width: 810px) {
+  .fundoFiltro form label input {
+    width: 80%;
   }
 }
 
@@ -91,11 +104,28 @@
   .fundoFiltro form {
     flex-direction: column;
   }
+
+  .fundoFiltro form div {
+    width: 100%;
+  }
+
   .fundoFiltro form label select {
     margin: 5px 0;
+    width: 100%;
   }
-  .fundoFiltro form input {
+
+  .fundoFiltro form label input {
     margin: 5px 0;
+    width: 100%;
+  }
+
+  .fundoFiltro form #fundolimpar {
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .fundoFiltro form button#limpar {
+    width: 60%;
   }
 }
 

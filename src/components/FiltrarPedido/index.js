@@ -82,7 +82,7 @@ export default function FiltrarPedido({
             </select>
           </label>
         </div>
-        <div>
+        <div id="fundolimpar">
           <button id="limpar" onClick={limparFiltro}>
             Limpar
           </button>
