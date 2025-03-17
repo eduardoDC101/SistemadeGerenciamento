@@ -9,7 +9,7 @@ export default function FormularioAdc({
 }) {
   const [nome, setNome] = useState("");
   const [quantidade, setQuantidade] = useState("");
-  const [produto, setProduto] = useState("Foto_P");
+  const [produto, setProduto] = useState("Polaroid_P");
   const [formaEntrega, setFormaEntrega] = useState("Retirar");
   const [bairro, setBairro] = useState("");
 
@@ -49,7 +49,7 @@ export default function FormularioAdc({
 
     setNome("");
     setQuantidade("");
-    setProduto("Foto_P");
+    setProduto("Polaroid_P");
     setFormaEntrega("Retirar");
     setBairro("");
 
@@ -74,6 +74,28 @@ export default function FormularioAdc({
               />
             </div>
             <div className="itensForm">
+              <label htmlFor="produto">Produto: </label>
+              <select
+                id="produto"
+                value={produto}
+                onChange={(e) => setProduto(e.target.value)}
+                required
+              >
+                <option value="Polaroid_P">Polaroid P</option>
+                <option value="Polaroid_M">Polaroid M</option>
+                <option value="Tirinha_de_Polaroid">Tirinha de Polaroid</option>
+                <option value="Polaroid_com_Imã">Polaroid com Imã</option>
+                <option value="Quadro_Mosaico_A3">Quadro Mosaico A3</option>
+                <option value="Quadro_Varal_A3">Quadro Varal A3</option>
+                <option value="Porta_retrato_em_Vidro">
+                  Porta-retrato em Vidro
+                </option>
+                <option value="Porta_retrato_Varal">Porta-retrato Varal</option>
+                <option value="Box_de_Memórias">Box de Memórias</option>
+                <option value="Fotolivro">Fotolivro</option>
+              </select>
+            </div>
+            <div className="itensForm">
               <label htmlFor="quantidade">Quantidade: </label>
               <input
                 type="number"
@@ -84,20 +106,6 @@ export default function FormularioAdc({
                 onChange={(e) => setQuantidade(e.target.value)}
                 required
               />
-            </div>
-            <div className="itensForm">
-              <label htmlFor="produto">Produto: </label>
-              <select
-                id="produto"
-                value={produto}
-                onChange={(e) => setProduto(e.target.value)}
-                required
-              >
-                <option value="Foto_P">Foto P</option>
-                <option value="Foto_M">Foto M</option>
-                <option value="Foto_G">Foto G</option>
-                <option value="Album">Álbum</option>
-              </select>
             </div>
             <div className="itensForm">
               <label>Forma de Entrega: </label>

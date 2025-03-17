@@ -32,10 +32,16 @@ export default function App() {
   const totalEmVendas = pedidos.reduce((total, pedido) => {
     const quantidade = parseInt(pedido.quantidade, 10);
     const produtos = {
-      Foto_P: { valorUnitario: 2 },
-      Foto_M: { valorUnitario: 3 },
-      Foto_G: { valorUnitario: 3.5 },
-      Album: { valorUnitario: 250 },
+      Polaroid_P: { valorUnitario: 16 },
+      Polaroid_M: { valorUnitario: 25 },
+      Tirinha_de_Polaroid: { valorUnitario: 20 },
+      Polaroid_com_Imã: { valorUnitario: 35 },
+      Quadro_Mosaico_A3: { valorUnitario: 60 },
+      Quadro_Varal_A3: { valorUnitario: 60 },
+      Porta_retrato_em_Vidro: { valorUnitario: 60 },
+      Porta_retrato_Varal: { valorUnitario: 45 },
+      Box_de_Memórias: { valorUnitario: 30 },
+      Fotolivro: { valorUnitario: 180 },
     };
 
     const produtoSelecionado = produtos[pedido.produto];

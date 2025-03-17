@@ -48,6 +48,8 @@ export default function PedidoCard({
             e.stopPropagation();
             apagarPedido(index);
           }}
+          aria-label="Excluir pedido"
+          title="Excluir pedido"
         >
           <i class="fa-solid fa-trash"></i>
         </button>

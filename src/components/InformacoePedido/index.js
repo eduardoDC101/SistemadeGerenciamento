@@ -12,10 +12,20 @@ export default function InformacoePedido({
   const quantidade = parseInt(pedidoSelecionado.quantidade, 10);
 
   const produtos = {
-    Foto_P: { valorUnitario: 2, custoUnitario: 0.5 },
+    /*Foto_P: { valorUnitario: 2, custoUnitario: 0.5 },
     Foto_M: { valorUnitario: 3, custoUnitario: 0.75 },
     Foto_G: { valorUnitario: 3.5, custoUnitario: 1 },
-    Album: { valorUnitario: 250, custoUnitario: 115 },
+    Album: { valorUnitario: 250, custoUnitario: 115 },*/
+    Polaroid_P: { valorUnitario: 16 },
+    Polaroid_M: { valorUnitario: 25 },
+    Tirinha_de_Polaroid: { valorUnitario: 20 },
+    Polaroid_com_Imã: { valorUnitario: 35 },
+    Quadro_Mosaico_A3: { valorUnitario: 60 },
+    Quadro_Varal_A3: { valorUnitario: 60 },
+    Porta_retrato_em_Vidro: { valorUnitario: 60 },
+    Porta_retrato_Varal: { valorUnitario: 45 },
+    Box_de_Memórias: { valorUnitario: 30 },
+    Fotolivro: { valorUnitario: 180 },
   };
 
   const produtoSelecionado = produtos[pedidoSelecionado.produto];
@@ -35,6 +45,8 @@ export default function InformacoePedido({
     });
   };
 
+  const StringProduto = pedidoSelecionado.produto;
+
   return (
     <div className="InformacoePedido">
       <h1>Detalhes do Pedido</h1>
@@ -46,7 +58,7 @@ export default function InformacoePedido({
           <strong>Quantidade:</strong> {pedidoSelecionado.quantidade}
         </p>
         <p>
-          <strong>Produto:</strong> {pedidoSelecionado.produto}
+          <strong>Produto:</strong> {StringProduto.replace(/_/g, " ")}
         </p>
         <p>
           <strong>Forma de Entrega:</strong> {pedidoSelecionado.formaEntrega}
