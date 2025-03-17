@@ -8,7 +8,7 @@ export default function FormularioAdc({
   adicionarPedidos,
 }) {
   const [nome, setNome] = useState("");
-  const [quantidade, setQuantidade] = useState(1);
+  const [quantidade, setQuantidade] = useState("");
   const [produto, setProduto] = useState("Foto_P");
   const [formaEntrega, setFormaEntrega] = useState("Retirar");
   const [bairro, setBairro] = useState("");
@@ -48,7 +48,7 @@ export default function FormularioAdc({
     adicionarPedidos(novoPedido);
 
     setNome("");
-    setQuantidade(1);
+    setQuantidade("");
     setProduto("Foto_P");
     setFormaEntrega("Retirar");
     setBairro("");
@@ -81,12 +81,7 @@ export default function FormularioAdc({
                 placeholder="Quantidade..."
                 min="1"
                 value={quantidade}
-                onChange={(e) => {
-                  const newValue = parseInt(e.target.value);
-                  if (newValue >= 1) {
-                    setQuantidade(newValue);
-                  }
-                }}
+                onChange={(e) => setQuantidade(e.target.value)}
                 required
               />
             </div>
