@@ -1,5 +1,10 @@
 import React, { useEffect, useState, useMemo, useCallback } from "react";
+
 import "./styles/styleApp.css";
+
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import BotoesCabecalhos from "./components/BotoesCabecalho";
 import FormularioAdc from "./components/FormularioAdc";
 import PedidoCard from "./components/PedidoCard";
@@ -88,6 +93,7 @@ export default function App() {
 
   return (
     <div className="fundoPrincipal">
+      <ToastContainer autoClose={2200} />
       <BotoesCabecalhos
         setAdcAtivado={setAdcAtivado}
         numeroDePedidos={numeroDePedidos}

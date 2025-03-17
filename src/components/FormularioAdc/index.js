@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./formulariostyle.css";
+import { toast } from "react-toastify";
 
 export default function FormularioAdc({
   adcAtivado,
@@ -7,13 +8,28 @@ export default function FormularioAdc({
   adicionarPedidos,
 }) {
   const [nome, setNome] = useState("");
-  const [quantidade, setQuantidade] = useState("");
+  const [quantidade, setQuantidade] = useState(1);
   const [produto, setProduto] = useState("Foto_P");
-  const [formaEntrega, setFormaEntrega] = useState("");
+  const [formaEntrega, setFormaEntrega] = useState("Retirar");
   const [bairro, setBairro] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
+
+    if (nome.length < 3) {
+      toast.warn("O Nome deve conter pelo menos 3 caracteres");
+      return;
+    }
+
+    if (quantidade <= 0) {
+      toast.warn("A Quantidade deve ser maior que 0");
+      return;
+    }
+
+    if (formaEntrega === "Entrega" && bairro.length < 5) {
+      toast.warn("O Bairro deve conter pelo menos 5 caracteres");
+      return;
+    }
 
     const novoPedido = {
       id: Date.now(),
@@ -32,9 +48,9 @@ export default function FormularioAdc({
     adicionarPedidos(novoPedido);
 
     setNome("");
-    setQuantidade("");
+    setQuantidade(1);
     setProduto("Foto_P");
-    setFormaEntrega("");
+    setFormaEntrega("Retirar");
     setBairro("");
 
     setAdcAtivado(false);
@@ -63,8 +79,14 @@ export default function FormularioAdc({
                 type="number"
                 id="quantidade"
                 placeholder="Quantidade..."
+                min="1"
                 value={quantidade}
-                onChange={(e) => setQuantidade(e.target.value)}
+                onChange={(e) => {
+                  const newValue = parseInt(e.target.value);
+                  if (newValue >= 1) {
+                    setQuantidade(newValue);
+                  }
+                }}
                 required
               />
             </div>
@@ -115,11 +137,24 @@ export default function FormularioAdc({
                   placeholder="Bairro..."
                   value={bairro}
                   onChange={(e) => setBairro(e.target.value)}
-                  required
+                  required={formaEntrega === "Entrega"}
                 />
               </div>
             )}
             <button type="submit">Salvar Pedido</button>
+            <button
+              onClick={(e) => {
+                if (
+                  window.confirm(
+                    "Tem certeza que deseja cancelar? Todos os dados serão perdidos."
+                  )
+                ) {
+                  setAdcAtivado(false);
+                }
+              }}
+            >
+              Cancelar
+            </button>
           </form>
         </div>
       )}
