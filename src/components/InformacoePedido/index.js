@@ -16,16 +16,16 @@ export default function InformacoePedido({
     Foto_M: { valorUnitario: 3, custoUnitario: 0.75 },
     Foto_G: { valorUnitario: 3.5, custoUnitario: 1 },
     Album: { valorUnitario: 250, custoUnitario: 115 },*/
-    Polaroid_P: { valorUnitario: 16 },
-    Polaroid_M: { valorUnitario: 25 },
-    Tirinha_de_Polaroid: { valorUnitario: 20 },
-    Polaroid_com_Imã: { valorUnitario: 35 },
+    Polaroid_P: { valorUnitario: 16 }, //3
+    Polaroid_M: { valorUnitario: 25 }, //3
+    Tirinha_de_Polaroid: { valorUnitario: 20 }, //3
+    Polaroid_com_Imã: { valorUnitario: 35 }, //3
     Quadro_Mosaico_A3: { valorUnitario: 60 },
     Quadro_Varal_A3: { valorUnitario: 60 },
     Porta_retrato_em_Vidro: { valorUnitario: 60 },
     Porta_retrato_Varal: { valorUnitario: 45 },
-    Box_de_Memórias: { valorUnitario: 30 },
-    Fotolivro: { valorUnitario: 180 },
+    Box_de_Memórias: { valorUnitario: 30 }, //2
+    Fotolivro: { valorUnitario: 180 }, //4
   };
 
   const produtoSelecionado = produtos[pedidoSelecionado.produto];
