@@ -10,9 +10,9 @@ export default function BackUp({ pedidos, setPedidos }) {
       return;
     }
 
-    const jsonString = JSON.stringify(pedidos, null, 2);
-    const blob = new Blob([jsonString], { type: "application/json" });
-    const url = URL.createObjectURL(blob);
+    const jsonString = JSON.stringify(pedidos, null, 2); // 1.0
+    const blob = new Blob([jsonString], { type: "application/json" }); //1.1
+    const url = URL.createObjectURL(blob); // 1.2
 
     const link = document.createElement("a");
     link.href = url;
@@ -71,3 +71,22 @@ export default function BackUp({ pedidos, setPedidos }) {
     </section>
   );
 }
+
+/*
+
+1.0 = const jsonString = JSON.stringify(pedidos, null, 2);
+Aqui Convertemos um array/objeto para uma String JSON.
+JSON.stringify(), pega um objeto JS, no caso, pedidos e trasnforma em uma string no formato JSON.
+No comando "JSON.stringify()", o segundo parametro é a função de replacer, isso é, uma função que executaria sobre cada item do array pedidos enquanto ele estivesse sendo transformado em String JSON, no nosso caso, usamos null, ou seja, não alteramos os dados de 'pedido" em nada.
+O terceiro parâmetro ( 2) é um valor de indentação que torna o JSON mais legível. Ele define que haja um recuo de 2 espaços em branco, facilitando a leitura do arquivo gerado.
+
+1.1 = const blob = new Blob([jsonString], { type: "application/json" });
+Aqui criamos um BLob, que é um arquivo de memória, a função Blob permite criar arquivos binários a partir de dados.
+Estamos passando para Blob, [jsonString], que é nosso array(por isso as []) com os valores de pedido em String JSON.
+{ type: "application/json" }, é um objeto onde você define o tipo do arquivo. No caso, você está dizendo que o tipo do arquivo será application/json, o que indica que é um arquivo JSON.
+Ou seja, nosso const blob armazena um "arquivo virtual" contendo o JSON dos pedidos.
+
+
+
+
+*/
