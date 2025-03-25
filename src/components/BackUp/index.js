@@ -14,7 +14,7 @@ export default function BackUp({ pedidos, setPedidos }) {
     const blob = new Blob([jsonString], { type: "application/json" }); //1.1
     const url = URL.createObjectURL(blob); // 1.2
 
-    const link = document.createElement("a");
+    const link = document.createElement("a"); // 1.3
     link.href = url;
     link.download = "backup_pedidos.json";
 
@@ -86,7 +86,15 @@ Estamos passando para Blob, [jsonString], que é nosso array(por isso as []) com
 { type: "application/json" }, é um objeto onde você define o tipo do arquivo. No caso, você está dizendo que o tipo do arquivo será application/json, o que indica que é um arquivo JSON.
 Ou seja, nosso const blob armazena um "arquivo virtual" contendo o JSON dos pedidos.
 
+1.2 = const url = URL.createObjectURL(blob); 
+Esta linha cria uma URL temporária para o blob que criamos, 
+essa URL é um link que aponta para o "arquivo virtual" criamos na memória. 
+Essa URL pode ser usada para baixar o arquivo ou exibi-lo.
+URL.createObjectURL(blob), gera uma URL que pode ser usada como se fosse o endereço de um arquivo real.
 
-
+1.3 = const link = document.createElement("a");
+Aqui criamos um elemento <a> HTML programaticamente
+Este <a> é o elemento de link que normalmente usamos em páginas da web para criar links clicáveis.
+document.createElement("a") cria esse link "invisível", que vamps configurar para fazer o download do arquivo.
 
 */
