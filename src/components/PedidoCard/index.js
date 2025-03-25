@@ -51,7 +51,7 @@ export default function PedidoCard({
           aria-label="Excluir pedido"
           title="Excluir pedido"
         >
-          <i class="fa-solid fa-trash"></i>
+          <i className="fa-solid fa-trash"></i>
         </button>
       </div>
     </div>

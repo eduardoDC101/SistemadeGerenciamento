@@ -1,6 +1,7 @@
 import React from "react";
 import { jsPDF } from "jspdf"; //Usada para criar e manipular pdfs
 import "./botaostyle.css";
+import { toast } from "react-toastify";
 
 export default function BotoesCabecalhos({
   setAdcAtivado,
@@ -36,16 +37,17 @@ export default function BotoesCabecalhos({
     let y = 40; // Posição vertical inicial para os dados
 
     // Adicionando os cabeçalhos das colunas e redefinindo as fonts
-    doc.setFontSize(16);
+    doc.setFontSize(14);
     doc.setFont("helvetica", "bold");
-    doc.text("Nome", 20, y);
-    doc.text("Data", 100, y); // Ajustando a posição para alinhar corretamente, mesma linha (y) distancias diferentes(x)
-    doc.text("Valor", 150, y);
+    doc.text("Nome", 20, y); // Ajustando a posição para alinhar corretamente, mesma linha (y) distancias diferentes(x)
+    doc.text("Produto", 75, y);
+    doc.text("Data", 135, y);
+    doc.text("Valor", 170, y);
     y += 10; // Distância entre o cabeçalho e os dados
 
     // Definindo a fonte de volta para normal para os dados
     doc.setFont("helvetica", "normal");
-    doc.setFontSize(14);
+    doc.setFontSize(12);
 
     // Adicionando os dados dos pedidos
     pedidosEntregues.forEach((pedido) => {
@@ -60,13 +62,14 @@ export default function BotoesCabecalhos({
 
       // Alinhando o texto
       doc.text(pedido.nome, 20, y); // Nome alinhado à esquerda
-      doc.text(pedido.data, 100, y); // Data alinhada no meio
+      doc.text(pedido.produto, 75, y);
+      doc.text(pedido.data, 135, y); // Data alinhada no meio
       doc.text(
         valorBruto.toLocaleString("pt-BR", {
           style: "currency",
           currency: "BRL",
         }),
-        150,
+        170,
         y
       ); // Valor alinhado à direita
 
@@ -87,28 +90,40 @@ export default function BotoesCabecalhos({
 
     // Salvando o arquivo PDF
     doc.save("Relatorio_Polaroigs.pdf");
+    toast.success("Relatório Emitido");
   };
 
   // Função para calcular o valor total do pedido
   const calcularValorTotal = (pedido) => {
     const quantidade = parseInt(pedido.quantidade, 10);
+
     const produtos = {
-      Polaroid_P: { valorUnitario: 16 },
-      Polaroid_M: { valorUnitario: 25 },
-      Tirinha_de_Polaroid: { valorUnitario: 20 },
-      Polaroid_com_Imã: { valorUnitario: 35 },
-      Quadro_Mosaico_A3: { valorUnitario: 60 },
-      Quadro_Varal_A3: { valorUnitario: 60 },
-      Porta_retrato_em_Vidro: { valorUnitario: 60 },
-      Porta_retrato_Varal: { valorUnitario: 45 },
-      Box_de_Memórias: { valorUnitario: 30 },
-      Fotolivro: { valorUnitario: 180 },
+      Polaroid_P: { Pacote_Mini: 16, Pacote_Big: 26, Unidade: 4 },
+      Polaroid_M: { Pacote_Mini: 25, Pacote_Big: 35, Unidade: 4 },
+      Tirinha_de_Polaroid: { Pacote_Mini: 20, Pacote_Big: 26, Unidade: 6 },
+      Polaroid_com_Imã: { Pacote_Mini: 35, Pacote_Big: 65, Unidade: 4 },
+      Quadro_Mosaico_A3: { Modelo_Unico: 60 },
+      Quadro_Varal_A3: { Modelo_Unico: 60 },
+      Porta_retrato_em_Vidro: { Modelo_Unico: 60 },
+      Porta_retrato_Varal: { Modelo_Unico: 45 },
+      Box_de_Memórias: { Box_Mini: 30, Box_Big: 42 },
+      Fotolivro: {
+        Horizontal_20: 180,
+        Horizontal_40: 240,
+        Vertical_20: 280,
+        Vertical_40: 320,
+      },
     };
 
-    const produtoSelecionado = produtos[pedido.produto];
-    return produtoSelecionado
-      ? quantidade * produtoSelecionado.valorUnitario
-      : 0;
+    if (
+      produtos[pedido.produto] &&
+      produtos[pedido.produto][pedido.modeloProduto]
+    ) {
+      const valorProdutoModeloSelecionado =
+        produtos[pedido.produto][pedido.modeloProduto];
+      const valorBruto = quantidade * valorProdutoModeloSelecionado;
+      return valorBruto;
+    }
   };
 
   return (

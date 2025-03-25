@@ -7,7 +7,7 @@
     -50%
   ); /* Centraliza a div em relação ao centro da tela */
   background-color: #ffffff;
-  padding: 20px;
+  padding: 0 20px 10px 20px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.693);
   z-index: 999;
   width: 80%;
@@ -20,7 +20,7 @@
 .InformacoePedido h1 {
   font-size: 3em;
   color: #45b5c4;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 .fundoInfor {
@@ -28,16 +28,69 @@
   flex-wrap: wrap;
   justify-content: space-between;
   text-align: left;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 
 .InformacoePedido p {
-  font-size: 1.5em;
+  font-size: 1.7em;
   font-weight: 600;
   color: #000000dc;
   width: 80%;
   margin: 0 auto;
   margin-bottom: 20px;
+}
+
+#formInformacoes {
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+#formInformacoes .fundoCustoExtra {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 50%;
+}
+
+#formInformacoes input {
+  outline: none;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.119);
+  padding: 5px 10px;
+  border-radius: 5px 0 0 5px;
+  flex: 1;
+  font-weight: 600;
+}
+
+#formInformacoes label {
+  font-size: 1.5em;
+  font-weight: 600;
+  color: #000000dc;
+}
+
+#formInformacoes button.btnAdc {
+  padding: 5px 15px;
+  color: white;
+  background-color: #45b5c4;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  font-weight: 600;
+  font-size: 1.5em;
+  width: auto;
+}
+
+#formInformacoes button.btnAdc:hover {
+  background-color: #1e6973;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.InformacoePedido .custosExtras {
+  opacity: 0.7;
+  font-style: italic;
+  font-size: 13px;
 }
 
 .InformacoePedido button {
@@ -115,6 +168,12 @@ span.lucro {
   .InformacoePedido {
     width: 65%;
   }
+  .InformacoePedido button {
+    padding: 10px 25px;
+  }
+  #formInformacoes .fundoCustoExtra {
+    width: 30%;
+  }
 }
 
 @media (max-width: 480px) {
@@ -131,7 +190,7 @@ span.lucro {
   }
   .InformacoePedido p {
     margin-bottom: 10px;
-    font-size: 18px;
+    font-size: 15px;
   }
   .ValoresCard p.ultimoP {
     margin-bottom: 20px;

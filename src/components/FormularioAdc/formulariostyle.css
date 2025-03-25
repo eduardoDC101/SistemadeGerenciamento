@@ -53,8 +53,8 @@
 
 .divFundoForm form select {
   padding: 10px;
-  outline: none;
   width: 104.5%;
+  outline: none;
   border: 5px;
   border: 1px solid rgba(0, 0, 0, 0.204);
   border-radius: 5px;

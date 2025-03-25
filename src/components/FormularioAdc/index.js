@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./formulariostyle.css";
 import { toast } from "react-toastify";
 
@@ -10,8 +10,36 @@ export default function FormularioAdc({
   const [nome, setNome] = useState("");
   const [quantidade, setQuantidade] = useState("");
   const [produto, setProduto] = useState("Polaroid_P");
-  const [formaEntrega, setFormaEntrega] = useState("Retirar");
+  const [formaEntrega, setFormaEntrega] = useState("");
   const [bairro, setBairro] = useState("");
+
+  const [modeloProduto, setModeloProduto] = useState("Pacote_Mini");
+  const [verificaModelos, setVerificaModelos] = useState(false);
+
+  useEffect(() => {
+    if (
+      produto === "Quadro_Mosaico_A3" ||
+      produto === "Quadro_Varal_A3" ||
+      produto === "Porta_retrato_em_Vidro" ||
+      produto === "Porta_retrato_Varal"
+    ) {
+      setModeloProduto("Modelo_Unico");
+    } else if (
+      produto === "Polaroid_P" ||
+      produto === "Polaroid_M" ||
+      produto === "Polaroid_com_Imã" ||
+      produto === "Tirinha_de_Polaroid"
+    ) {
+      setModeloProduto("Pacote_Mini");
+      setVerificaModelos(true);
+    } else if (produto === "Box_de_Memórias") {
+      setModeloProduto("Box_Mini");
+      setVerificaModelos(true);
+    } else if (produto === "Fotolivro") {
+      setModeloProduto("Horizontal_20");
+      setVerificaModelos(true);
+    }
+  }, [produto]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -39,6 +67,7 @@ export default function FormularioAdc({
       formaEntrega,
       estado: "Pendente",
       data: new Date().toLocaleDateString("pt-BR"),
+      modeloProduto,
     };
 
     if (formaEntrega === "Entrega") {
@@ -52,9 +81,86 @@ export default function FormularioAdc({
     setProduto("Polaroid_P");
     setFormaEntrega("Retirar");
     setBairro("");
+    setModeloProduto("");
 
     setAdcAtivado(false);
   }
+
+  const verificaProduto = (nomeProduto) => {
+    if (
+      nomeProduto === "Polaroid_P" ||
+      nomeProduto === "Polaroid_M" ||
+      nomeProduto === "Polaroid_com_Imã"
+    ) {
+      return (
+        <div className="itensForm">
+          <label htmlFor="modeloProduto">Modelo: </label>
+          <select
+            id="modeloProduto"
+            value={modeloProduto}
+            onChange={(e) => setModeloProduto(e.target.value)}
+            required
+          >
+            <option value="Pacote_Mini">Pacote Mini (10 fotos)</option>
+            <option value="Pacote_Big">Pacote Big (20 fotos)</option>
+            <option value="Unidade">Unidade</option>
+          </select>
+        </div>
+      );
+    }
+    if (nomeProduto === "Tirinha_de_Polaroid") {
+      return (
+        <div className="itensForm">
+          <label htmlFor="modeloProduto">Modelo: </label>
+          <select
+            id="modeloProduto"
+            value={modeloProduto}
+            onChange={(e) => setModeloProduto(e.target.value)}
+            required
+          >
+            <option value="Pacote_Mini">Pacote Mini (4 tirinhas)</option>
+            <option value="Pacote_Big">Pacote Big (6 tirinhas)</option>
+            <option value="Unidade">Unidade</option>
+          </select>
+        </div>
+      );
+    }
+    if (nomeProduto === "Box_de_Memórias") {
+      return (
+        <div className="itensForm">
+          <label htmlFor="modeloProduto">Modelo: </label>
+          <select
+            id="modeloProduto"
+            value={modeloProduto}
+            onChange={(e) => setModeloProduto(e.target.value)}
+            required
+          >
+            <option value="Box_Mini">Box Mini (10 fotos)</option>
+            <option value="Box_Big">Box Big (20 fotinhas)</option>
+          </select>
+        </div>
+      );
+    }
+    if (nomeProduto === "Fotolivro") {
+      return (
+        <div className="itensForm">
+          <label htmlFor="modeloProduto">Modelo: </label>
+          <select
+            id="modeloProduto"
+            value={modeloProduto}
+            onChange={(e) => setModeloProduto(e.target.value)}
+            required
+          >
+            <option value="Horizontal_20">Horizontal (20 fotos)</option>
+            <option value="Horizontal_40">Horizontal (40 fotinhas)</option>
+            <option value="Vertical_20">Vertical (20 fotos)</option>
+            <option value="Vertical_40">Vertical (40 fotinhas)</option>
+          </select>
+        </div>
+      );
+    }
+    return null;
+  };
 
   return (
     <div>
@@ -95,6 +201,7 @@ export default function FormularioAdc({
                 <option value="Fotolivro">Fotolivro</option>
               </select>
             </div>
+            {verificaModelos && verificaProduto(produto)}
             <div className="itensForm">
               <label htmlFor="quantidade">Quantidade: </label>
               <input
@@ -146,12 +253,19 @@ export default function FormularioAdc({
             )}
             <button type="submit">Salvar Pedido</button>
             <button
+              type="button"
               onClick={(e) => {
                 if (
                   window.confirm(
                     "Tem certeza que deseja cancelar? Todos os dados serão perdidos."
                   )
                 ) {
+                  setNome("");
+                  setQuantidade("");
+                  setProduto("Polaroid_P");
+                  setFormaEntrega("Retirar");
+                  setBairro("");
+                  setModeloProduto("");
                   setAdcAtivado(false);
                 }
               }}
