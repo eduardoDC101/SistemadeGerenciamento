@@ -15,14 +15,14 @@ export default function BackUp({ pedidos, setPedidos }) {
     const url = URL.createObjectURL(blob); // 1.2
 
     const link = document.createElement("a"); // 1.3
-    link.href = url;
-    link.download = "backup_pedidos.json";
+    link.href = url; //1.4
+    link.download = "Backup_Polaroigs.json"; //1.5
 
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    document.body.appendChild(link); //1.6
+    link.click(); //1.7
+    document.body.removeChild(link); //1.8
 
-    URL.revokeObjectURL(url);
+    URL.revokeObjectURL(url); // 1.9
     toast.success("Backup baixado com sucesso!");
   };
 
@@ -96,5 +96,38 @@ URL.createObjectURL(blob), gera uma URL que pode ser usada como se fosse o ender
 Aqui criamos um elemento <a> HTML programaticamente
 Este <a> é o elemento de link que normalmente usamos em páginas da web para criar links clicáveis.
 document.createElement("a") cria esse link "invisível", que vamps configurar para fazer o download do arquivo.
+
+1.4 = link.href = url;
+Agora, definimos o endereço (href) do link, ou seja, a URL do arquivo. 
+O url que você criamos anteriormente(do virtual blob) é atribuído ao href link.
+Isso significa que, quando o usuário clicar nesse link, ele será redirecionado para o arquivo JSON que criamos
+
+1.5 = link.download = "Backup_Polaroigs.json";
+Aqui, definimos o nome que o arquivo deve ter quando baixado.
+O atributo downloaddo link HTML permite definar o nome do arquivo.
+Quando o usuário clicar no link, o arquivo será baixado com o nome "Backup_Polaroigs"
+
+1.6 = document.body.appendChild(link); 
+Essa linha adiciona o link dinamicamente no corpo da página. 
+Isso é necessário porque, para que um link de download funcione, o elemento <a> precisa estar presente no DOM, mesmo que seja temporariamente.
+O appendChild()adicione o link ao corpo do documento. 
+
+1.7 = link.click(); 
+Aqui, simulamps um clique no link. 
+Essa linha faz o download do arquivo imediatamente, sem que o usuário precise clicar de fato no link.
+O click()é um método do JavaScript que dispara o evento de clicar no link, ou que inicia o processo de download.
+
+1.8 = document.body.removeChild(link);
+Após o clique, removemos o link da página . 
+Como o link foi usado apenas para iniciar o download, não faz sentido deixá-lo na página depois que ele já foi clicado.
+O removeChild()é usado para remover o link do DOM, limpando a página.
+
+1.9 = URL.revokeObjectURL(url);
+Aqui, revogamos a URL temporária criada anteriormente.
+Isso é feito para liberar a memória e garantir que o sistema não atualize referências desnecessárias a objetos antigos.
+revokeObjectURL() remova a URL gerada pelo createObjectURL, o que ajuda a liberar recursos.
+(quebramos o link de acesso ao blob)
+
+(O download é mt rápido, por isso não vemos o Link, ele surge, é baixado e some e também , por que esse link é "invisível", ele não tem estilo, posição ou qualquer outra coisa que o faça aparecer na tela.)
 
 */
