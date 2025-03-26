@@ -174,3 +174,12 @@ try {
 3.0 = input.click();, por fim, isso simula o clique nesse input, é a forma de executar tudo que expliquei acima.
 
 */
+
+/*
+
+O elemento <a> é criado dinamicamente e adicionado ao DOM, mas ele não é visível porque ele não é estilizado nem posicionado para ser exibido na tela. Ele está lá no DOM, mas como não há nada que o torne visível, como um texto ou um estilo de exibição, ele fica "invisível". 
+
+O <input> é criado da mesma forma que o <a>, mas ele também não é visível porque ele não é exibido diretamente na tela. Ele é adicionado ao DOM de forma invisível, e a interação com ele ocorre através de um clique programático 
+
+
+*/
