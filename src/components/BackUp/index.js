@@ -59,10 +59,10 @@ export default function BackUp({ pedidos, setPedidos }) {
         // 2.8--------------------------------
       };
 
-      reader.readAsText(file);
+      reader.readAsText(file); //2.9
     };
 
-    input.click();
+    input.click(); // 3.0
   };
   return (
     <section className="fundoBotoesBackup">
@@ -167,5 +167,10 @@ try {
     } catch (error) {
       toast.error("Erro ao restaurar o backup!");
       }
+
+2.9 = reader.readAsText(file);, usamos o FileReader para ler como texto nosso arquivo .json, assim que terminar de ler, executa-se a função reader.onload = () => {...}
+(Apesar de reader.onload estar antes de reader.readAsText(file);, ele é executado primeiro e depois de ser executado[ser lido], ele executa o onload. Tipo declarar função e usar ela abaixo no código.)
+
+3.0 = input.click();, por fim, isso simula o clique nesse input, é a forma de executar tudo que expliquei acima.
 
 */
