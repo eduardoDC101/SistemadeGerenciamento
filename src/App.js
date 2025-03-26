@@ -26,7 +26,10 @@ export default function App() {
   useEffect(() => {
     const pedidosSalvos = JSON.parse(localStorage.getItem("pedidos")) || [];
     setPedidos(pedidosSalvos);
-    alert("Lembre-se de fazer BACKUP");
+    const alerta_backup = () => {
+      alert("Lembre-se de fazer o backup regularmente");
+    };
+    setTimeout(alerta_backup, 3000);
   }, []);
 
   //Calcular Valor e Número dos pedidos
