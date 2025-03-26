@@ -28,16 +28,17 @@ export default function BackUp({ pedidos, setPedidos }) {
 
   //RestaurarBackup
   const restaurarBackup = () => {
-    const input = document.createElement("input");
-    input.type = "file";
-    input.accept = ".json";
+    const input = document.createElement("input"); //2.0
+    input.type = "file"; //2.1
+    input.accept = ".json"; //2.2
 
+    //2.3
     input.onchange = (event) => {
-      const file = event.target.files[0];
+      const file = event.target.files[0]; //2.4
 
-      if (!file) return;
+      if (!file) return; //2.5
 
-      const reader = new FileReader();
+      const reader = new FileReader(); // 2.6
 
       reader.onload = () => {
         try {
@@ -72,7 +73,7 @@ export default function BackUp({ pedidos, setPedidos }) {
   );
 }
 
-/*
+/* SALVAR BACKUP
 
 1.0 = const jsonString = JSON.stringify(pedidos, null, 2);
 Aqui Convertemos um array/objeto para uma String JSON.
@@ -129,5 +130,22 @@ revokeObjectURL() remova a URL gerada pelo createObjectURL, o que ajuda a libera
 (quebramos o link de acesso ao blob)
 
 (O download é mt rápido, por isso não vemos o Link, ele surge, é baixado e some e também , por que esse link é "invisível", ele não tem estilo, posição ou qualquer outra coisa que o faça aparecer na tela.)
+
+*/
+
+/* RESTAURAR BACKUP
+
+2.0 = const input = document.createElement("input");     Cria um input e armazena ele em uma constante "input"
+2.1 = input.type = "file";     Fala que o tipo desse input é file (aquele que seleciona um arquivo do PC)
+2.2 = input.accept = ".json";  Fala que ese arquivo só pode ser do formato ".json"
+Isso tudo seria: <input type="file" accept=".json" />
+
+2.3 = input.onchange = (event) => {...}, tudo aqui dentro será executado quando uma change acontecer, no caso, tudo dentro de {}, vai rodar quando o usuário clicar e "enviar" o arquivo. (event é o arquivo).
+
+2.4 = const file = event.target.files[0];,  o comando event.target.files[0];, pega o primeiro arquivo que o usuário selecionar (caso ele selecione vários). E armazena em file, que vamos usar. Logo a constante "file", possui nosso arquivo .json de backup.
+
+2.5 = if (!file) return; Se o usuário tentar mandar sem selecionar um arquivo (file fica null ou vazio), o código para ali e não faz nada.
+
+2.6 = 
 
 */
