@@ -40,7 +40,9 @@ export default function BackUp({ pedidos, setPedidos }) {
 
       const reader = new FileReader(); // 2.6
 
+      // 2.7
       reader.onload = () => {
+        //2.8---------------------------------
         try {
           const pedidosRestaurados = JSON.parse(reader.result);
 
@@ -54,6 +56,7 @@ export default function BackUp({ pedidos, setPedidos }) {
         } catch (error) {
           toast.error("Erro ao restaurar o backup!");
         }
+        // 2.8--------------------------------
       };
 
       reader.readAsText(file);
@@ -146,6 +149,23 @@ Isso tudo seria: <input type="file" accept=".json" />
 
 2.5 = if (!file) return; Se o usuário tentar mandar sem selecionar um arquivo (file fica null ou vazio), o código para ali e não faz nada.
 
-2.6 = 
+2.6 = const reader = new FileReader();, aqui criamos um objeto chamado "FileReader", e armazenamos em "reader", esse tipo de objeto é usado para ler o conteúdo do arquivo escolhido (no caso, o arquivo JSON).
+
+2.7 = reader.onload = () => {...}, Estamos dizendo que, quando o arquivo termina de ser lido (reader.onload) , tudo dentro de {} será executado.
+
+2.8 = 
+try {
+   const pedidosRestaurados = JSON.parse(reader.result);, converte o conteúdo do rquivo .json em um objeto Javascript e armazena em pedidosRestaurados
+
+   if (Array.isArray(pedidosRestaurados)) {   Aqui verificamos se a conversão resultou em um array(se deu certo)
+      setPedidos(pedidosRestaurados);  Se deu certo, vamos atualizar ele no state pedidos (assim recuperando)
+      localStorage.setItem("pedidos", JSON.stringify(pedidosRestaurados));  E depois, salvando no localStorage
+      toast.success("Backup restaurado com sucesso!");
+    } else {
+        toast.error("Formato de arquivo inválido!");
+      }
+    } catch (error) {
+      toast.error("Erro ao restaurar o backup!");
+      }
 
 */
