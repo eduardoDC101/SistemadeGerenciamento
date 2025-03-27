@@ -4,7 +4,6 @@
   align-items: center;
   justify-content: center;
 }
-
 .botaoRestaurar {
   background-color: orange;
   border: none;
@@ -15,13 +14,11 @@
   font-weight: 600;
   letter-spacing: 1px;
 }
-
 .botaoRestaurar:hover {
   cursor: pointer;
   background-color: rgb(118, 79, 7);
   scale: 0.95;
 }
-
 .botaoSalvar {
   background-color: green;
   border: none;
